@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cotiviti Policy Intelligence POC</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="sidebar" aria-label="Demo navigation">
+        <div class="brand-mark">CI</div>
+        <div>
+          <p class="eyebrow">Hackathon POC</p>
+          <h1>Policy Intelligence Workbench</h1>
+        </div>
+        <p class="intro">
+          A lightweight demo that converts health care policy text into usable review logic with traceable evidence.
+        </p>
+        <nav class="nav-list">
+          <a href="#policy">Policy</a>
+          <a href="#changes">Changes</a>
+          <a href="#rules">Rules</a>
+          <a href="#claim">Claim test</a>
+        </nav>
+        <button id="runDemo" class="primary-action" type="button">Run demo</button>
+      </aside>
+
+      <section class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Topic 3: Content Management in Health Care</p>
+            <h2>Policy text to computable claim guidance</h2>
+          </div>
+          <div class="status-pill" id="statusPill">Ready</div>
+        </header>
+
+        <section class="workflow-strip" aria-label="Workflow overview">
+          <div>
+            <span>1</span>
+            <strong>Compare</strong>
+            <small>old vs. new policy</small>
+          </div>
+          <div>
+            <span>2</span>
+            <strong>Extract</strong>
+            <small>codes and criteria</small>
+          </div>
+          <div>
+            <span>3</span>
+            <strong>Evaluate</strong>
+            <small>sample claim</small>
+          </div>
+          <div>
+            <span>4</span>
+            <strong>Explain</strong>
+            <small>audit trail</small>
+          </div>
+        </section>
+
+        <section id="policy" class="split-panel">
+          <article>
+            <div class="section-heading">
+              <h3>Current policy</h3>
+              <span>Version 2025.10</span>
+            </div>
+            <textarea id="oldPolicy" spellcheck="false" aria-label="Current policy text"></textarea>
+          </article>
+          <article>
+            <div class="section-heading">
+              <h3>Proposed policy</h3>
+              <span>Version 2026.01</span>
+            </div>
+            <textarea id="newPolicy" spellcheck="false" aria-label="Proposed policy text"></textarea>
+          </article>
+        </section>
+
+        <section class="dashboard-grid">
+          <article id="changes" class="panel">
+            <div class="section-heading">
+              <h3>Change summary</h3>
+              <span id="changeCount">0 items</span>
+            </div>
+            <div id="changeSummary" class="summary-list"></div>
+          </article>
+
+          <article id="rules" class="panel">
+            <div class="section-heading">
+              <h3>Extracted rules</h3>
+              <span id="ruleCount">0 rules</span>
+            </div>
+            <div id="rulesOutput" class="rules-output"></div>
+          </article>
+
+          <article id="claim" class="panel claim-panel">
+            <div class="section-heading">
+              <h3>Sample claim</h3>
+              <span>editable inputs</span>
+            </div>
+            <div class="claim-grid">
+              <label>CPT code <input id="claimCpt" value="00811"></label>
+              <label>ICD-10 code <input id="claimIcd" value="Z12.11"></label>
+              <label>Patient age <input id="claimAge" type="number" value="67"></label>
+              <label>ASA class <input id="claimAsa" type="number" value="2"></label>
+              <label class="wide">Documentation note <input id="claimNote" value="Screening colonoscopy; patient has diabetes and hypertension."></label>
+            </div>
+            <button id="evaluateClaim" class="secondary-action" type="button">Evaluate claim</button>
+            <div id="decisionCard" class="decision-card"></div>
+          </article>
+
+          <article class="panel">
+            <div class="section-heading">
+              <h3>Audit trail</h3>
+              <span>explainable output</span>
+            </div>
+            <pre id="auditTrail" class="audit-box">{}</pre>
+          </article>
+        </section>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
